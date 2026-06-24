@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>G8 — Signature Collection 2026</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c9a84c;
+    --bg: #060606;
+    --text: #f0ede8;
+    --muted: #555;
+    --dim: #222;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line-top { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gold); opacity: 0.25; }
+  .line-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); opacity: 0.25; }
+
+  .corner { position: absolute; width: 14px; height: 14px; border-color: var(--gold); border-style: solid; opacity: 0.25; }
+  .tl { top: 20px; left: 20px; border-width: 1px 0 0 1px; }
+  .tr { top: 20px; right: 20px; border-width: 1px 1px 0 0; }
+  .bl { bottom: 20px; left: 20px; border-width: 0 0 1px 1px; }
+  .br { bottom: 20px; right: 20px; border-width: 0 1px 1px 0; }
+
+  .year {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .seal {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 0.5px solid var(--dim);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 48px;
+  }
+  .seal-inner {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 0.5px solid #2a2a2a;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .seal-text { font-size: 15px; font-weight: 500; color: var(--gold); letter-spacing: 1px; }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 7px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .rule { width: 1px; height: 64px; background: var(--gold); opacity: 0.3; margin: 40px auto; }
+
+  .countdown {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .count-item { text-align: center; }
+  .count-num { font-size: 40px; font-weight: 300; color: var(--text); line-height: 1; letter-spacing: -1px; }
+  .count-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  .count-sep { font-size: 24px; color: var(--gold); opacity: 0.3; align-self: flex-start; margin-top: 6px; }
+
+  .details {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .detail { text-align: center; }
+  .detail-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #333; }
+  .detail-value { font-size: 12px; color: #666; margin-top: 6px; }
+  .vsep { width: 0.5px; height: 32px; background: #1e1e1e; }
+
+  .footer {
+    position: absolute;
+    bottom: 36px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #222;
+  }
+
+  @media (max-width: 480px) {
+    .countdown { gap: 20px; }
+    .count-num { font-size: 30px; }
+    .details { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="line-top"></div>
+  <div class="line-bottom"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <p class="year">2026</p>
+
+  <div class="seal">
+    <div class="seal-inner">
+      <span class="seal-text">G8</span>
+    </div>
+  </div>
+
+  <p class="eyebrow">Something is coming</p>
+
+  <div class="rule"></div>
+
+  <div class="countdown">
+    <div class="count-item">
+      <p class="count-num" id="days">00</p>
+      <p class="count-label">Days</p>
+    </div>
+    <span class="count-sep">·</span>
+    <div class="count-item">
+      <p class="count-num" id="hours">00</p>
+      <p class="count-label">Hours</p>
+    </div>
+    <span class="count-sep">·</span>
+    <div class="count-item">
+      <p class="count-num" id="mins">00</p>
+      <p class="count-label">Min</p>
+    </div>
+    <span class="count-sep">·</span>
+    <div class="count-item">
+      <p class="count-num" id="secs">00</p>
+      <p class="count-label">Sec</p>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="detail">
+      <p class="detail-label">Edition</p>
+      <p class="detail-value">Nº 001 — 100</p>
+    </div>
+    <div class="vsep"></div>
+    <div class="detail">
+      <p class="detail-label">Clasp</p>
+      <p class="detail-value">Brass G8 Seal</p>
+    </div>
+    <div class="vsep"></div>
+    <div class="detail">
+      <p class="detail-label">Drop</p>
+      <p class="detail-value">2026</p>
+    </div>
+  </div>
+
+  <p class="footer">G8 — Crafted for the few</p>
+</div>
+
+<script>
+  const target = new Date('2026-09-01T00:00:00');
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) return;
+    document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+    document.getElementById('mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    document.getElementById('secs').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
